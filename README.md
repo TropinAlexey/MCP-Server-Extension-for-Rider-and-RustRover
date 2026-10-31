@@ -164,6 +164,13 @@ MCP tools are synchronous (request → response). Long-running operations of thi
 | `rider_conan` | `action=install\|create\|export\|search\|list\|remove\|remote\|profile\|build`, `projectPath?`, `buildFolder?`, `profile?`, `reference?`, `remote?`, `pattern?`, `extraArgs?` | Manage C++ packages via Conan 2.x: install/create/export/search/list/remove/remote/profile/build |
 | `rider_debugger` | `action=start\|attach\|break\|continue\|step\|step_in\|step_out\|evaluate\|backtrace\|locals\|registers\|threads\|stop`, `debugger?=gdb\|lldb`, `executable?`, `args?`, `pid?`, `breakpoint?`, `expression?` | Control GDB/LLDB debugger: start/attach/break/continue/step/evaluate/backtrace/locals/registers/threads |
 
+### PHP (PhpStorm)
+| Tool | Args | Description |
+|---|---|---|
+| `rider_composer` | `action=install\|update\|require\|remove\|show\|outdated\|validate\|dump-autoload\|create-project\|run-script\|audit`, `name?`, `version?`, `manager?=npm\|yarn\|pnpm`, `dev?`, `peer?`, `optional?`, `outdated?`, `script?`, `extraArgs?` | Manage PHP packages via Composer: install/update/require/remove/show/outdated/validate/dump-autoload/create-project/run-script/audit |
+| `rider_phpunit` | `action=run\|run_and_wait\|coverage\|list\|filter`, `filter?`, `projectPath?`, `configFile?`, `coverage?`, `coverageFormat?`, `extraArgs?`, `timeoutMs?`, `sessionId?` | Run PHPUnit tests: run/collect/coverage/list/filter, sessionId polling |
+| `rider_phpstan` | `action=analyse\|baseline\|clear-result-cache`, `paths?`, `level?`, `configFile?`, `projectPath?`, `extraArgs?` | PHPStan static analysis: analyse/baseline/clear-result-cache, configurable levels |
+
 ### Inspections
 | Tool | Args | Description |
 |---|---|---|
@@ -232,7 +239,7 @@ Recipes:
 - **Any JetBrains IDE 2026.2+** (IntelliJ IDEA, Rider, RustRover, PyCharm, WebStorm, GoLand, CLion, DataGrip, PhpStorm, RubyMine, Android Studio, etc.) — the MCP server is built in, no separate plugin to install
 - An MCP-compatible client: **Claude Code, Codex, Gemini CLI, GitHub Copilot, Cursor, Junie, Windsurf, Continue, OpenCode**, or a custom agent — the plugin is client-agnostic
 
-> **IDE-specific note:** Rider-only tools (NuGet, Publish, SWEA, dotTrace/dotMemory, WorkspaceConfig) are unavailable in other IDEs (including RustRover); RustRover-only tools (Cargo) are unavailable in Rider and other IDEs; PyCharm-only tools (Python env, pip, pytest, Django) are unavailable in Rider, RustRover, and other IDEs; GoLand-only tools (Go mod, test, gopls) are unavailable in Rider, RustRover, PyCharm, and other IDEs; WebStorm-only tools (npm, test, eslint) are unavailable in Rider, RustRover, PyCharm, GoLand, and other IDEs; IntelliJ IDEA-only tools (Maven, Gradle, JUnit) are unavailable in Rider, RustRover, PyCharm, GoLand, WebStorm, and other IDEs; CLion-only tools (CMake, Conan, GDB/LLDB) are unavailable in Rider, RustRover, PyCharm, GoLand, WebStorm, IntelliJ IDEA, and other IDEs; all other tools (tests, DB consoles, tool windows, IDE state, run configs, inspections, processes, profiling via built-in tools) work identically across all IDEs.
+> **IDE-specific note:** Rider-only tools (NuGet, Publish, SWEA, dotTrace/dotMemory, WorkspaceConfig) are unavailable in other IDEs (including RustRover); RustRover-only tools (Cargo) are unavailable in Rider and other IDEs; PyCharm-only tools (Python env, pip, pytest, Django) are unavailable in Rider, RustRover, and other IDEs; GoLand-only tools (Go mod, test, gopls) are unavailable in Rider, RustRover, PyCharm, and other IDEs; WebStorm-only tools (npm, test, eslint) are unavailable in Rider, RustRover, PyCharm, GoLand, and other IDEs; IntelliJ IDEA-only tools (Maven, Gradle, JUnit) are unavailable in Rider, RustRover, PyCharm, GoLand, WebStorm, and other IDEs; CLion-only tools (CMake, Conan, GDB/LLDB) are unavailable in Rider, RustRover, PyCharm, GoLand, WebStorm, IntelliJ IDEA, and other IDEs; PhpStorm-only tools (Composer, PHPUnit, PHPStan) are unavailable in Rider, RustRover, PyCharm, GoLand, WebStorm, IntelliJ IDEA, CLion, and other IDEs; all other tools (tests, DB consoles, tool windows, IDE state, run configs, inspections, processes, profiling via built-in tools) work identically across all IDEs.
 
 ### Tool Availability by IDE
 
@@ -272,11 +279,14 @@ Recipes:
 | `rider_maven` | | | | | | | ✅ | |
 | `rider_gradle` | | | | | | | ✅ | |
 | `rider_junit` | | | | | | | ✅ | |
-| `rider_cmake` | | | | | | | | ✅ |
-| `rider_conan` | | | | | | | | ✅ |
-| `rider_debugger` | | | | | | | | ✅ |
+| `rider_cmake` | | | | | | | | ✅ | |
+| `rider_conan` | | | | | | | | ✅ | |
+| `rider_debugger` | | | | | | | | ✅ | |
+| `rider_composer` | | | | | | | | | ✅ |
+| `rider_phpunit` | | | | | | | | | ✅ |
+| `rider_phpstan` | | | | | | | | | ✅ |
 
-**Total: 37 tools** — 15 universal (all IDEs), 5 Rider-only (unavailable in RustRover and other IDEs), 1 RustRover-only (unavailable in Rider and other IDEs), 4 PyCharm-only (unavailable in Rider, RustRover, and other IDEs), 3 GoLand-only (unavailable in Rider, RustRover, PyCharm, and other IDEs), 3 WebStorm-only (unavailable in Rider, RustRover, PyCharm, GoLand, and other IDEs), 3 IntelliJ IDEA-only (unavailable in Rider, RustRover, PyCharm, GoLand, WebStorm, and other IDEs), 3 CLion-only (unavailable in Rider, RustRover, PyCharm, GoLand, WebStorm, and other IDEs).
+**Total: 40 tools** — 15 universal (all IDEs), 5 Rider-only (unavailable in RustRover and other IDEs), 1 RustRover-only (unavailable in Rider and other IDEs), 4 PyCharm-only (unavailable in Rider, RustRover, and other IDEs), 3 GoLand-only (unavailable in Rider, RustRover, PyCharm, and other IDEs), 3 WebStorm-only (unavailable in Rider, RustRover, PyCharm, GoLand, and other IDEs), 3 IntelliJ IDEA-only (unavailable in Rider, RustRover, PyCharm, GoLand, WebStorm, and other IDEs), 3 CLion-only (unavailable in Rider, RustRover, PyCharm, GoLand, WebStorm, and other IDEs), 3 PhpStorm-only (unavailable in Rider, RustRover, PyCharm, GoLand, WebStorm, IntelliJ IDEA, and other IDEs).
 
 ### From Marketplace
 

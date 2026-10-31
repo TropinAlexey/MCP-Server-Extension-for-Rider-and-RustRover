@@ -1,0 +1,8 @@
+<!-- PhpStorm/PHP-only extensions: loaded only when com.intellij.modules.php is present -->
+<idea-plugin>
+    <extensions defaultExtensionNs="com.intellij">
+        <mcpServer.mcpToolset implementation="com.github.tropin.ridermcp.php.ComposerToolset"/>
+        <mcpServer.mcpToolset implementation="com.github.tropin.ridermcp.php.PHPUnitToolset"/>
+        <mcpServer.mcpToolset implementation="com.github.tropin.ridermcp.php.StaticAnalysisTools"/>
+    </extensions>
+</idea-plugin>
